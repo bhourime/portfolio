@@ -89,9 +89,7 @@ nav {
   background-image: url('photo.png');
   background-size: cover;
   background-position: center 15%;
-  background-attachment: fixed;
   filter: brightness(0.55) contrast(1.06) saturate(0.7);
-  transform: scale(1.04); /* compense le fixed sur mobile */
 }
 
 /* Dégradé cinématique par-dessus */
@@ -156,9 +154,8 @@ nav {
   50%       { transform: translateX(-50%) translateY(8px); }
 }
 
-/* Sur mobile, background-attachment:fixed pose des problèmes — on le désactive */
 @media (max-width: 900px) {
-  .hero-bg { background-attachment: scroll; transform: none; }
+  .hero-bg { background-position: center top; }
 }
 
 /* ────────────────────────────────────────────
