@@ -75,7 +75,7 @@ nav {
 /* ────────────────────────────────────────────
    HERO — CANVAS SCROLLYTELLING
 ──────────────────────────────────────────── */
-.scroll-wrap { position: relative; height: 500vh; }
+.scroll-wrap { position: relative; height: 280vh; }
 .scroll-sticky {
   position: sticky; top: 0; height: 100vh; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
@@ -303,9 +303,9 @@ nav {
 
 /* Résumé */
 .exp-resume {
-  font-size: 0.77rem; line-height: 1.78;
-  color: rgba(255,255,255,0.60);
-  padding: 0.9rem 1.2rem;
+  font-size: 0.84rem; line-height: 1.82;
+  color: rgba(255,255,255,0.65);
+  padding: 1rem 1.3rem;
   background: rgba(255,255,255,0.04);
   border-left: 3px solid rgba(255,255,255,0.18);
   margin-bottom: 1.8rem;
@@ -329,8 +329,8 @@ nav {
 }
 .ctx-v {
   font-family: var(--font-display);
-  font-size: 0.86rem; font-weight: 500;
-  color: rgba(255,255,255,0.78); line-height: 1.35;
+  font-size: 0.94rem; font-weight: 500;
+  color: rgba(255,255,255,0.78); line-height: 1.38;
 }
 
 /* Label missions */
@@ -357,21 +357,21 @@ nav {
   color: rgba(255,255,255,0.10); line-height: 1;
 }
 .mt {
-  font-size: 0.74rem; font-weight: 600;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 0.24rem; line-height: 1.4;
+  font-size: 0.82rem; font-weight: 600;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 0.28rem; line-height: 1.45;
 }
 .md {
-  font-size: 0.7rem; line-height: 1.72;
-  color: rgba(255,255,255,0.54);
-  margin-bottom: 0.3rem;
+  font-size: 0.78rem; line-height: 1.78;
+  color: rgba(255,255,255,0.60);
+  margin-bottom: 0.35rem;
 }
 .mr {
-  font-size: 0.63rem; color: rgba(255,255,255,0.40);
+  font-size: 0.72rem; color: rgba(255,255,255,0.46);
   font-style: italic;
   padding-left: 0.7rem;
   border-left: 2px solid var(--gold-lt);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 /* Tags */
@@ -947,13 +947,8 @@ footer p {
   const img = new Image();
   img.crossOrigin = 'anonymous';
 
-  /* On tente de charger le portrait embarqué depuis le document d'origine.
-     S'il est absent, on affiche un fond cinématique. */
-  const PORTRAIT_B64 = (function () {
-    /* Récupère la base64 du document source si disponible via un méta */
-    const m = document.querySelector('meta[name="portrait-b64"]');
-    return m ? m.content : null;
-  })();
+  /* Portrait — fichier séparé (plus léger pour le repo) */
+  const PORTRAIT_B64 = null; // si tu veux embarquer la base64, colle-la ici
 
   let W = 0, H = 0, prog = 0;
   let imgReady = false;
@@ -1041,8 +1036,8 @@ footer p {
   if (PORTRAIT_B64) {
     img.src = 'data:image/jpeg;base64,' + PORTRAIT_B64;
   } else {
-    /* Pas de portrait embarqué : fond dégradé uniquement */
-    resize();
+    /* Charge depuis le fichier séparé — mets ta photo dans le repo sous ce nom */
+    img.src = 'photo.jpg';
   }
 
   window.addEventListener('resize', resize, { passive: true });
