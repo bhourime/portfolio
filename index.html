@@ -164,6 +164,8 @@ footer p{font-size:0.58rem;letter-spacing:0.14em;color:rgba(255,255,255,0.16);te
 
 .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
+/* Fallback si JS désactivé ou sandbox */
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;}}
 
 @media(max-width:900px){
   .profil-grid,.contact-inner,.exp-ctx{grid-template-columns:1fr;}
@@ -340,7 +342,7 @@ footer p{font-size:0.58rem;letter-spacing:0.14em;color:rgba(255,255,255,0.16);te
         <div class="exp-btn">+</div>
       </div>
       <div class="exp-body"><div class="exp-inner"><div class="exp-content">
-        <p class="exp-resume">Cabinet généraliste intervenant en droit civil, droit commercial et droit du travail tunisien. Stage axé sur l'articulation entre ces branches : responsabilité contractuelle civile, requalification de contrats commerciaux en contrats de travail, liquidation de société et droits du salarié, contentieux commercial.</p>
+        <p class="exp-resume">Cabinet généraliste intervenant en droit civil, droit commercial et droit du travail tunisien. Stage axé sur la pratique transversale de ces branches, de la rédaction de notes d'analyse à la présence aux audiences.</p>
         <div class="exp-ctx">
           <div class="ctx-c"><p class="ctx-l">Juridiction</p><p class="ctx-v">Tribunal de 1ère instance de Monastir</p></div>
           <div class="ctx-c"><p class="ctx-l">Clientèle</p><p class="ctx-v">PME, commerçants, particuliers, salariés</p></div>
@@ -349,28 +351,18 @@ footer p{font-size:0.58rem;letter-spacing:0.14em;color:rgba(255,255,255,0.16);te
         <span class="mlabel">Missions &amp; réalisations</span>
         <ul class="missions">
           <li class="mission"><span class="mn">01</span><div>
-            <p class="mt">Droit civil — responsabilité contractuelle et droit des obligations (COC tunisien)</p>
-            <p class="md">Analyse des conditions de la responsabilité civile contractuelle : inexécution, mise en demeure, lien de causalité, préjudice, clauses limitatives et force majeure selon le Code des obligations et des contrats. Rédaction de notes d'analyse sur des dossiers de litiges contractuels.</p>
-            <p class="mr">→ 4 notes d'analyse civile produites, intégrées aux conclusions rédigées par le Maître.</p>
+            <p class="mt">Rédaction de notes d'analyse — droit civil et droit des affaires</p>
+            <p class="md">Analyse de litiges contractuels, étude de contrats commerciaux et de statuts de sociétés tunisiennes. Rédaction de conclusions en demande et en défense pour le Maître.</p>
+            <p class="mr">→ 4 notes d'analyse produites, 3 jeux de conclusions déposés au greffe.</p>
           </div></li>
           <li class="mission"><span class="mn">02</span><div>
-            <p class="mt">Interface droit civil / droit social — articulation des branches du droit privé</p>
-            <p class="md">Étude des zones de confluence entre droit civil et droit du travail tunisien : qualification du contrat de travail vs. contrat d'entreprise, requalification de relations commerciales en contrats de travail, articulation entre droit de la liquidation des sociétés et droits légaux du salarié licencié.</p>
-            <p class="mr">→ 3 consultations transversales produites — défense coordonnée sur procédures civile et prud'homale simultanées.</p>
-          </div></li>
-          <li class="mission"><span class="mn">03</span><div>
-            <p class="mt">Droit des affaires — analyse contractuelle et conclusions commerciales</p>
-            <p class="md">Analyse de contrats commerciaux (distribution exclusive, franchise, bail commercial), étude de statuts de SARL et SA tunisiennes, rédaction de conclusions en demande et en défense pour litiges commerciaux (recouvrement de créances, résiliation abusive, concurrence déloyale).</p>
-            <p class="mr">→ 3 jeux de conclusions déposés au greffe. 5 fiches juridiques thématiques produites.</p>
-          </div></li>
-          <li class="mission"><span class="mn">04</span><div>
-            <p class="mt">Audiences et suivi procédural — relation client</p>
-            <p class="md">Présence aux audiences civiles et commerciales du Tribunal de première instance de Monastir, suivi du calendrier procédural, assistance lors des rendez-vous clients, rédaction de comptes-rendus.</p>
-            <p class="mr">→ ~15 audiences, 8 comptes-rendus de rendez-vous client, 6 dossiers actifs suivis.</p>
+            <p class="mt">Suivi procédural et audiences</p>
+            <p class="md">Présence aux audiences civiles et commerciales, suivi du calendrier procédural, assistance lors des rendez-vous clients et rédaction de comptes-rendus.</p>
+            <p class="mr">→ ~15 audiences, 6 dossiers actifs suivis.</p>
           </div></li>
         </ul>
         <div class="tags">
-          <span class="tag">Droit civil tunisien</span><span class="tag">Responsabilité contractuelle</span><span class="tag">Interface civil/social</span><span class="tag">Droit des affaires</span><span class="tag">Droit des sociétés</span><span class="tag">Contentieux commercial</span>
+          <span class="tag">Droit civil tunisien</span><span class="tag">Droit des affaires</span><span class="tag">Contentieux commercial</span><span class="tag">Rédaction juridique</span>
         </div>
       </div></div></div>
     </div>
@@ -392,37 +384,27 @@ footer p{font-size:0.58rem;letter-spacing:0.14em;color:rgba(255,255,255,0.16);te
         <div class="exp-btn">+</div>
       </div>
       <div class="exp-body"><div class="exp-inner"><div class="exp-content">
-        <p class="exp-resume">Premier stage en cabinet auprès d'un avocat plaidant en droit pénal des affaires et en droit civil devant la Cour d'appel de Sousse. Initiation à l'articulation entre l'action publique et l'action civile dans les infractions d'affaires (abus de confiance, escroquerie, chèques sans provision), et à la préparation des dossiers d'appel correctionnel et civil.</p>
+        <p class="exp-resume">Premier stage en cabinet auprès d'un avocat plaidant en droit pénal des affaires et en droit civil devant la Cour d'appel de Sousse. Initiation à la pratique judiciaire, observation des audiences et participation à la préparation des dossiers.</p>
         <div class="exp-ctx">
           <div class="ctx-c"><p class="ctx-l">Juridiction</p><p class="ctx-v">Cour d'appel de Sousse — Chambres civile &amp; correctionnelle</p></div>
-          <div class="ctx-c"><p class="ctx-l">Types de litiges</p><p class="ctx-v">Infractions d'affaires, fraudes, appels correctionnels, litiges civils</p></div>
+          <div class="ctx-c"><p class="ctx-l">Types de litiges</p><p class="ctx-v">Infractions d'affaires, fraudes, litiges civils en appel</p></div>
           <div class="ctx-c"><p class="ctx-l">Droit mobilisé</p><p class="ctx-v">Droit pénal des affaires · Procédure pénale · Droit civil</p></div>
         </div>
         <span class="mlabel">Missions &amp; réalisations</span>
         <ul class="missions">
           <li class="mission"><span class="mn">01</span><div>
-            <p class="mt">Droit pénal des affaires — infractions et constitution des dossiers de défense</p>
-            <p class="md">Étude des infractions pénales d'affaires selon le Code pénal tunisien : abus de confiance, escroquerie, émission de chèques sans provision, fausse facturation. Analyse des éléments constitutifs et des moyens de défense usuels. Participation à la constitution de 3 dossiers pénaux.</p>
-            <p class="mr">→ 3 dossiers pénaux préparés (2 chèques sans provision, 1 abus de confiance entre associés).</p>
+            <p class="mt">Observation des audiences civiles et correctionnelles</p>
+            <p class="md">Présence aux audiences des chambres civile et correctionnelle. Prise de notes structurée, comparaison des techniques de plaidoirie pénales et civiles.</p>
+            <p class="mr">→ ~12 audiences observées, note d'observation pour chacune.</p>
           </div></li>
           <li class="mission"><span class="mn">02</span><div>
-            <p class="mt">Articulation pénal / civil — action publique et réparation du préjudice</p>
-            <p class="md">Étude de la constitution de partie civile devant le juge répressif, du principe "le pénal tient le civil en l'état", du quantum des dommages-intérêts alloués par les chambres correctionnelles tunisiennes. Initiation à la rédaction des mémoires d'appel correctionnel.</p>
-            <p class="mr">→ Contribution à 2 mémoires d'appel correctionnel incluant les demandes de réparation civile.</p>
-          </div></li>
-          <li class="mission"><span class="mn">03</span><div>
-            <p class="mt">Droit civil en appel — veille juridique et préparation des dossiers</p>
-            <p class="md">Suivi des réformes du droit civil tunisien, rédaction de 4 fiches de veille thématiques. Participation à la préparation de 3 dossiers d'appel civils : identification des moyens d'appel, recherche jurisprudentielle, relecture des conclusions, vérification des références légales.</p>
-            <p class="mr">→ 4 fiches de veille, 3 dossiers civils préparés, ~10 courriers juridiques rédigés.</p>
-          </div></li>
-          <li class="mission"><span class="mn">04</span><div>
-            <p class="mt">Audiences civiles et correctionnelles — observation à la Cour d'appel de Sousse</p>
-            <p class="md">Présence aux audiences des chambres civile et correctionnelle de la Cour d'appel de Sousse. Observation des plaidoiries pénales et civiles. Prise de notes structurée et rédaction d'une note d'observation pour chaque audience.</p>
-            <p class="mr">→ ~12 audiences observées (civiles et correctionnelles), note d'observation pour chacune.</p>
+            <p class="mt">Participation à la préparation des dossiers</p>
+            <p class="md">Aide à la constitution de dossiers pénaux (abus de confiance, chèques sans provision), recherche jurisprudentielle, rédaction de fiches de veille sur les réformes du droit civil tunisien.</p>
+            <p class="mr">→ 4 fiches de veille produites, ~10 courriers juridiques rédigés.</p>
           </div></li>
         </ul>
         <div class="tags">
-          <span class="tag">Droit pénal des affaires</span><span class="tag">Infractions d'affaires</span><span class="tag">Procédure pénale</span><span class="tag">Action civile / publique</span><span class="tag">Procédure d'appel</span><span class="tag">Veille juridique</span>
+          <span class="tag">Droit pénal des affaires</span><span class="tag">Procédure pénale</span><span class="tag">Droit civil en appel</span><span class="tag">Veille juridique</span>
         </div>
       </div></div></div>
     </div>
@@ -491,16 +473,25 @@ function tog(id){document.getElementById(id).classList.toggle('open');}
 /* SCROLL REVEAL */
 (function(){
   var els = document.querySelectorAll('.reveal');
+  /* Rendre visible immédiatement les éléments déjà dans le viewport */
+  function checkAll(){
+    els.forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight + 100){el.classList.add('visible');}
+    });
+  }
+  checkAll();
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
       });
-    },{threshold:0.1});
+    },{threshold:0.05,rootMargin:'0px 0px 50px 0px'});
     els.forEach(function(el){io.observe(el);});
   } else {
     els.forEach(function(el){el.classList.add('visible');});
   }
+  window.addEventListener('scroll',checkAll,{passive:true});
 })();
 </script>
 </body>
