@@ -523,7 +523,7 @@ footer p {
       <p class="hero-tagline" id="hTagline">
         Master 1 Droit des Affaires &amp; Business Partner<br>
         École Elijé, Aix-en-Provence — 2026<br>
-        En recherche d'alternance dès septembre 2026.
+        23 ans · En recherche d'alternance dès septembre 2026.
       </p>
     </div>
     <div class="scroll-cue">
@@ -993,7 +993,7 @@ footer p {
       const dw = img.naturalWidth  * ratio;
       const dh = img.naturalHeight * ratio;
       const dx = (W - dw) / 2;
-      const dy = (H - dh) / 2 - offsetY;
+      const dy = (H - dh) * 0.15 - offsetY;
       ctx.save();
       ctx.filter = `brightness(${0.48 + p * 0.28}) contrast(1.08) saturate(${0.32 + p * 0.68})`;
       ctx.drawImage(img, dx, dy, dw, dh);
