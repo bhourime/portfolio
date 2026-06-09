@@ -552,7 +552,6 @@ footer p {
 <header class="hero" id="hero">
   <div class="hero-bg"></div>
   <div class="hero-gradient"></div>
-  <div class="hero-grain"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Juriste en Droit des Affaires &amp; Patrimoines</p>
     <h1 class="hero-name">Eya<br><em>Bhouri</em></h1>
@@ -976,18 +975,29 @@ function tog(id) {
 
 /* ── SCROLL REVEAL ── */
 (function () {
-  const io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.10 });
+  const els = document.querySelectorAll('.reveal');
 
-  document.querySelectorAll('.reveal').forEach(function (el) {
-    io.observe(el);
-  });
+  /* Si IntersectionObserver dispo, on l'utilise */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    els.forEach(function (el) { io.observe(el); });
+
+    /* Sécurité : si après 1.5s rien n'est visible, on force tout */
+    setTimeout(function () {
+      els.forEach(function (el) { el.classList.add('visible'); });
+    }, 1500);
+  } else {
+    /* Fallback : tout visible immédiatement */
+    els.forEach(function (el) { el.classList.add('visible'); });
+  }
 })();
 
 /* ── SMOOTH SCROLL LINKS ── */
