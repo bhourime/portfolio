@@ -73,25 +73,56 @@ nav {
 .nav-links a:hover { color: var(--white); }
 
 /* ────────────────────────────────────────────
-   HERO — CANVAS SCROLLYTELLING
+   HERO — fond fixe, scroll libre
 ──────────────────────────────────────────── */
-.scroll-wrap { position: relative; height: 280vh; }
-.scroll-sticky {
-  position: sticky; top: 0; height: 100vh; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-}
-#heroCanvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-
-.hero-overlay {
-  position: absolute; inset: 0;
+.hero {
+  position: relative;
+  height: 100vh; min-height: 600px;
   display: flex; flex-direction: column; justify-content: flex-end;
   padding: 4rem 7vw 5rem;
-  background: linear-gradient(to top,
+  overflow: hidden;
+}
+
+/* Photo en background-image — parallaxe natif CSS */
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('photo.png');
+  background-size: cover;
+  background-position: center 15%;
+  background-attachment: fixed;
+  filter: brightness(0.55) contrast(1.06) saturate(0.7);
+  transform: scale(1.04); /* compense le fixed sur mobile */
+}
+
+/* Dégradé cinématique par-dessus */
+.hero-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
     rgba(10,9,8,0.92) 0%,
-    rgba(10,9,8,0.42) 48%,
-    transparent 100%);
+    rgba(10,9,8,0.38) 50%,
+    rgba(10,9,8,0.12) 100%
+  );
+}
+
+/* Grain subtil */
+.hero-grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.35;
   pointer-events: none;
 }
+
+.hero-content {
+  position: relative; z-index: 2;
+  animation: heroIn 1.1s var(--ease-smooth) both;
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .hero-eyebrow {
   font-size: 0.58rem; letter-spacing: 0.46em; text-transform: uppercase;
   color: var(--gold-lt); margin-bottom: 1rem;
@@ -105,22 +136,29 @@ nav {
 }
 .hero-name em { font-style: italic; color: var(--gold-lt); }
 .hero-tagline {
-  font-size: 0.8rem; line-height: 1.9;
-  color: rgba(255,255,255,0.52); max-width: 28rem;
+  font-size: 0.82rem; line-height: 1.9;
+  color: rgba(255,255,255,0.54); max-width: 28rem;
   border-left: 2px solid var(--gold); padding-left: 1.4rem;
 }
 
 .scroll-cue {
-  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-  color: rgba(255,255,255,0.24); font-size: 0.52rem;
+  color: rgba(255,255,255,0.28); font-size: 0.52rem;
   letter-spacing: 0.32em; text-transform: uppercase;
+  z-index: 2;
   animation: bob 2.2s ease-in-out infinite;
 }
-.scroll-cue-bar { width: 1px; height: 2.2rem; background: rgba(255,255,255,0.18); }
+.scroll-cue-bar { width: 1px; height: 2.2rem; background: rgba(255,255,255,0.20); }
 @keyframes bob {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* Sur mobile, background-attachment:fixed pose des problèmes — on le désactive */
+@media (max-width: 900px) {
+  .hero-bg { background-attachment: scroll; transform: none; }
 }
 
 /* ────────────────────────────────────────────
@@ -514,24 +552,24 @@ footer p {
 <!-- ═══════════════════════════
      HERO
 ═══════════════════════════ -->
-<div class="scroll-wrap" id="scrollWrap">
-  <div class="scroll-sticky">
-    <canvas id="heroCanvas"></canvas>
-    <div class="hero-overlay">
-      <p class="hero-eyebrow" id="hEyebrow">Juriste en Droit des Affaires &amp; Patrimoines</p>
-      <h1 class="hero-name" id="hName">Eya<br><em>Bhouri</em></h1>
-      <p class="hero-tagline" id="hTagline">
-        Master 1 Droit des Affaires &amp; Business Partner<br>
-        École Elijé, Aix-en-Provence — 2026<br>
-        23 ans · En recherche d'alternance dès septembre 2026.
-      </p>
-    </div>
-    <div class="scroll-cue">
-      <div class="scroll-cue-bar"></div>
-      Défiler
-    </div>
+<header class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Juriste en Droit des Affaires &amp; Patrimoines</p>
+    <h1 class="hero-name">Eya<br><em>Bhouri</em></h1>
+    <p class="hero-tagline">
+      Master 1 Droit des Affaires &amp; Business Partner<br>
+      École Elijé, Aix-en-Provence — 2026<br>
+      23 ans · En recherche d'alternance dès septembre 2026.
+    </p>
   </div>
-</div>
+  <div class="scroll-cue">
+    <div class="scroll-cue-bar"></div>
+    Défiler
+  </div>
+</header>
 
 <!-- ═══════════════════════════
      PROFIL
@@ -933,119 +971,7 @@ footer p {
      SCRIPTS
 ═══════════════════════════ -->
 <script>
-/* ── CANVAS HERO ── */
-(function () {
-  const canvas = document.getElementById('heroCanvas');
-  const ctx    = canvas.getContext('2d');
-  const wrap   = document.getElementById('scrollWrap');
-
-  const eyebrow = document.getElementById('hEyebrow');
-  const name    = document.getElementById('hName');
-  const tagline = document.getElementById('hTagline');
-
-  /* Photo portrait — image placeholder en dégradé cinématique (pas de base64) */
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-
-  /* Portrait — fichier séparé (plus léger pour le repo) */
-  const PORTRAIT_B64 = null; // si tu veux embarquer la base64, colle-la ici
-
-  let W = 0, H = 0, prog = 0;
-  let imgReady = false;
-
-  /* Couleurs de secours si pas de photo */
-  function drawFallback() {
-    const g = ctx.createLinearGradient(0, 0, W, H);
-    g.addColorStop(0,   '#0d0c0a');
-    g.addColorStop(0.5, '#1c1a16');
-    g.addColorStop(1,   '#0d0c0a');
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, W, H);
-  }
-
-  function drawGrain() {
-    ctx.save();
-    ctx.globalAlpha = 0.032;
-    for (let i = 0; i < 600; i++) {
-      ctx.beginPath();
-      ctx.arc(Math.random() * W, Math.random() * H, Math.random() * 1.1, 0, Math.PI * 2);
-      ctx.fillStyle = '#fff';
-      ctx.fill();
-    }
-    ctx.restore();
-  }
-
-  function drawVignette() {
-    const vg = ctx.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.88);
-    vg.addColorStop(0, 'rgba(0,0,0,0)');
-    vg.addColorStop(1, 'rgba(0,0,0,0.60)');
-    ctx.fillStyle = vg;
-    ctx.fillRect(0, 0, W, H);
-  }
-
-  function render(p) {
-    ctx.clearRect(0, 0, W, H);
-
-    if (imgReady && img.naturalWidth) {
-      const scale   = 1 + p * 0.18;
-      const offsetY = p * H * 0.1;
-      const ratio   = Math.max(W / img.naturalWidth, H / img.naturalHeight) * scale;
-      const dw = img.naturalWidth  * ratio;
-      const dh = img.naturalHeight * ratio;
-      const dx = (W - dw) / 2;
-      const dy = (H - dh) * 0.15 - offsetY;
-      ctx.save();
-      ctx.filter = `brightness(${0.48 + p * 0.28}) contrast(1.08) saturate(${0.32 + p * 0.68})`;
-      ctx.drawImage(img, dx, dy, dw, dh);
-      ctx.restore();
-    } else {
-      drawFallback();
-    }
-
-    drawGrain();
-    drawVignette();
-  }
-
-  function onScroll() {
-    const rect  = wrap.getBoundingClientRect();
-    const total = wrap.offsetHeight - window.innerHeight;
-    const p     = Math.max(0, Math.min(1, -rect.top / total));
-    prog = p;
-    render(p);
-
-    const fade   = Math.max(0, 1 - p * 2.6);
-    const shiftY = p * -75;
-
-    eyebrow.style.opacity   = fade;
-    eyebrow.style.transform = `translateY(${shiftY * 0.4}px)`;
-    name.style.opacity      = fade;
-    name.style.transform    = `translateY(${shiftY}px)`;
-    tagline.style.opacity   = fade;
-    tagline.style.transform = `translateY(${shiftY * 0.6}px)`;
-  }
-
-  function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-    render(prog);
-  }
-
-  img.onload = function () { imgReady = true; resize(); };
-  img.onerror = function () { imgReady = false; resize(); };
-
-  if (PORTRAIT_B64) {
-    img.src = 'data:image/jpeg;base64,' + PORTRAIT_B64;
-  } else {
-    /* Charge depuis le fichier séparé — mets ta photo dans le repo sous ce nom */
-    img.src = 'photo.png';
-  }
-
-  window.addEventListener('resize', resize, { passive: true });
-  window.addEventListener('scroll', onScroll, { passive: true });
-  resize();
-})();
-
-/* ── ACCORDÉON ── */
+/* ── ACCORDÉON ── */ */
 function tog(id) {
   const card = document.getElementById(id);
   card.classList.toggle('open');
